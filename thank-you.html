@@ -1,0 +1,175 @@
+
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070816">
+<title>Merci ! | ItsyaboiiGaetan</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+.thanks-wrap{
+  width:min(720px,calc(100% - 32px));
+  min-height:80vh;
+  margin:auto;
+  display:grid;
+  place-items:center;
+  padding:60px 0;
+}
+.thanks-card{
+  width:100%;
+  box-sizing:border-box;
+  text-align:center;
+  padding:clamp(26px,6vw,52px);
+  border:1px solid rgba(59,215,255,.35);
+  border-radius:16px;
+  background:linear-gradient(135deg,#101832,#130d24);
+  box-shadow:0 20px 70px #0005;
+}
+.thanks-icon{
+  width:76px;
+  height:76px;
+  display:grid;
+  place-items:center;
+  margin:0 auto 25px;
+  border-radius:50%;
+  color:#3bd7ff;
+  border:1px solid rgba(59,215,255,.5);
+  background:rgba(59,215,255,.08);
+  font-size:38px;
+  box-shadow:0 0 30px rgba(59,215,255,.12);
+}
+.thanks-card h1{
+  font:800 clamp(28px,6vw,46px)/1.2 var(--font-head);
+  margin:12px 0 18px;
+}
+.thanks-card .lead{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.9;
+  max-width:490px;
+  margin:0 auto 25px;
+}
+.thanks-tag{
+  color:#66ddff;
+  font-size:11px;
+  letter-spacing:2px;
+  font-weight:800;
+}
+.thanks-note{
+  color:#91a0c4;
+  font-size:12px;
+  line-height:1.8;
+  margin:25px auto;
+  max-width:460px;
+}
+.thanks-actions{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+  margin-top:28px;
+}
+.thanks-actions a{
+  text-decoration:none;
+}
+.thanks-language{
+  position:fixed;
+  top:16px;
+  right:16px;
+  z-index:30;
+  display:flex;
+  gap:5px;
+}
+.thanks-language button{
+  background:#101832;
+  color:#fff;
+  border:1px solid #397cff;
+  padding:8px;
+  border-radius:5px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+<div class="ambient ambient-blue"></div>
+<div class="ambient ambient-red"></div>
+<div class="scanlines" aria-hidden="true"></div>
+
+<div class="thanks-language" aria-label="Language">
+  <button type="button" data-lang="fr">FR</button>
+  <button type="button" data-lang="en">EN</button>
+  <button type="button" data-lang="ht">HT</button>
+</div>
+
+<main class="thanks-wrap">
+  <article class="thanks-card">
+    <div class="thanks-icon" aria-hidden="true">✓</div>
+
+    <p class="thanks-tag">PARTNER PROGRAM · ITSYABOII GAETAN</p>
+
+    <h1 data-t="title">Demande envoyée !</h1>
+
+    <p class="lead" data-t="intro">
+      Merci de l'intérêt que tu portes à une collaboration avec moi.
+      Ta demande a été transmise. Je pourrai la consulter et te contacter
+      si ta proposition correspond à mes projets.
+    </p>
+
+    <p class="thanks-note" data-t="note">
+      L'envoi d'une demande ne garantit pas son acceptation.
+      En attendant, tu peux retourner sur le site et découvrir mon contenu gaming.
+    </p>
+
+    <div class="thanks-actions">
+      <a class="button button-primary" href="index.html" data-t="home">
+        Retour au site
+      </a>
+      <a class="button" href="index.html#partners" data-t="again">
+        En savoir plus
+      </a>
+    </div>
+  </article>
+</main>
+
+<script>
+const translations = {
+  fr: {
+    title: 'Demande envoyée !',
+    intro: "Merci de l'intérêt que tu portes à une collaboration avec moi. Ta demande a été transmise. Je pourrai la consulter et te contacter si ta proposition correspond à mes projets.",
+    note: "L'envoi d'une demande ne garantit pas son acceptation. En attendant, tu peux retourner sur le site et découvrir mon contenu gaming.",
+    home: 'Retour au site',
+    again: 'En savoir plus'
+  },
+  en: {
+    title: 'Application submitted!',
+    intro: "Thanks for your interest in collaborating with me. Your application has been submitted. I'll review it and may contact you if your proposal fits my projects.",
+    note: "Submitting an application does not guarantee acceptance. In the meantime, head back to the website and check out my gaming content.",
+    home: 'Back to the website',
+    again: 'Learn more'
+  },
+  ht: {
+    title: 'Aplikasyon an voye!',
+    intro: "Mèsi paske ou enterese kolabore avè m. Aplikasyon ou an voye. M ap kapab gade li epi kontakte w si pwopozisyon ou an mache ak pwojè mwen yo.",
+    note: "Voye yon aplikasyon pa garanti y ap aksepte li. Pandan w ap tann, ou ka retounen sou sit la pou dekouvri kontni gaming mwen.",
+    home: 'Retounen sou sit la',
+    again: 'Plis enfòmasyon'
+  }
+};
+
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-t]').forEach(el => {
+    const key = el.dataset.t;
+    el.textContent = translations[lang][key];
+  });
+}
+
+document.querySelectorAll('[data-lang]').forEach(button => {
+  button.addEventListener('click', () => setLang(button.dataset.lang));
+});
+</script>
+</body>
+</html>
